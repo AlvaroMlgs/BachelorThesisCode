@@ -5,7 +5,7 @@ import math
 
 
 # Connect to the vehicle
-connection_string="tcp:127.0.0.1:5760"	# Change to match the vehicle's address
+connection_string="127.0.0.1:14450"	# Change to match the vehicle's address
 """
 Valid connection strings:
 	TCP connection: "tcp:[ip:port]"
@@ -17,7 +17,7 @@ vehicle = connect(connection_string, wait_ready=True)
 
 # Get some vehicle attributes (state)
 print "Autopilot Firmware version: %s" % vehicle.version
-print "Autopilot capabilities (supports ftp): %s" % vehicle.capabilities.ftp
+#print "Autopilot capabilities (supports ftp): %s" % vehicle.capabilities.ftp
 print "Global Location: %s" % vehicle.location.global_frame
 print "Global Location (relative altitude): %s" % vehicle.location.global_relative_frame
 print "Local Location: %s" % vehicle.location.local_frame    #NED
