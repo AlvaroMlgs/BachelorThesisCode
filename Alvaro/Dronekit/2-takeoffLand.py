@@ -1,3 +1,7 @@
+# this script connects to the vehicle via tcp (through mavproxy), displays some
+# general parameters and arms the vehicle, takes-off to an altitude of 10 metres,
+# and then lands at the same place and disconnects
+
 from dronekit import connect, VehicleMode, LocationGlobal, LocationGlobalRelative
 from pymavlink import mavutil # Needed for command message definitions
 import time
@@ -5,7 +9,7 @@ import math
 
 
 # Connect to the vehicle
-connection_string="tcp:127.0.0.1:5760"	# Change to match the vehicle's address
+connection_string="127.0.0.1:14550"	# Change to match the vehicle's address
 print "Connecting to vehicle on: %s" % connection_string
 vehicle = connect(connection_string, wait_ready=True)
 
@@ -73,18 +77,24 @@ def landHere():
 			break
 
 
+##################################################
+################# Mission begin ##################
+
 arm() # Arm already sets vehicle into GUIDED mode
 takeoff(10) # Vehicle must be in GUIDED mode
 time.sleep(5)
 landHere()
 
 
+################# Mission end ####################
+##################################################
+
 #Close vehicle object before exiting script
 print "Closing vehicle object"
 vehicle.close()
 
 print("Test completed")
-time.sleep(5)
+raw_input("Press Enter to end this script")
 
 
 

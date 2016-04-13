@@ -1,3 +1,9 @@
+# this script connects to the vehicle via tcp (through mavproxy), displays some
+# general parameters and arms the vehicle, loads a small mission that commands the 
+# vehicle to fly a square pattern around the take-off position, sets the vehicle to
+# follow that mission (AUTO) and waits for it to finish before Returning To Launch (RTL)
+# and disconnecting
+
 from dronekit import connect, VehicleMode, LocationGlobal, LocationGlobalRelative, Command
 from pymavlink import mavutil # Needed for command message definitions
 import time
@@ -5,7 +11,7 @@ import math
 
 
 # Connect to the vehicle
-connection_string="tcp:127.0.0.1:5760"	# Change to match the vehicle's address
+connection_string="127.0.0.1:14550"	# Change to match the vehicle's address
 print "Connecting to vehicle on: %s" % connection_string
 vehicle = connect(connection_string, wait_ready=True)
 
@@ -178,12 +184,15 @@ def returnToLaunch():
 			break
 
 
+##################################################
+################# Mission begin ##################
+
 arm() # Arm already sets vehicle into GUIDED mode
-waypointNumber=add_square_mission(vehicle.location.global_frame,30)
+waypointNumber=add_square_mission(vehicle.location.global_frame,5)
 takeoff(10) # Vehicle must be in GUIDED mode
 vehicle.commands.next=0 # Reset mission set to first (0) waypoint
 vehicle.mode = VehicleMode("AUTO") # Set mode to AUTO to start mission
-while True:
+while True: # Wait until mission is finished (reached last waypoint)
 	print "Next waypoint # ", vehicle.commands.next
 	print "Waypoint number:", waypointNumber
 	if vehicle.commands.next>=waypointNumber:
@@ -192,13 +201,16 @@ while True:
 	time.sleep(1)
 returnToLaunch()
 
+################# Mission end ####################
+##################################################
+
 
 #Close vehicle object before exiting script
 print "Closing vehicle object"
 vehicle.close()
 
 print("Test completed")
-time.sleep(5)
+raw_input("Press Enter to end this script")
 
 
 
