@@ -49,6 +49,7 @@ def arm():
 	vehicle.armed = True
 
 	while not vehicle.armed:      
+		vehicle.arme = True
 		print " Waiting for arming..."
 		time.sleep(1)
 
@@ -81,8 +82,8 @@ def landHere():
 ################# Mission begin ##################
 
 arm() # Arm already sets vehicle into GUIDED mode
-takeoff(10) # Vehicle must be in GUIDED mode
-time.sleep(5)
+takeoff(1) # Vehicle must be in GUIDED mode
+time.sleep(2)
 landHere()
 
 

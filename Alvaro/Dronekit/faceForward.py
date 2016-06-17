@@ -74,7 +74,7 @@ while vehicle.armed==False:		# Won't do anything if vehicle not manually armed
 armedHeading=vehicle.heading
 print "Initial heading is %i" % armedHeading 
 
-while abs(vehicle.heading-armedHeading)<30:		# Infinite loop until condition for taking control is met
+while abs(vehicle.heading-armedHeading)<90:		# Infinite loop until condition for taking control is met
 	print "Heading difference: %i" % (vehicle.heading-armedHeading)
 	time.sleep(0.5)
 

@@ -130,8 +130,8 @@ def returnToLaunch():
 ################# Mission begin ##################
 
 arm() # Arm already sets vehicle into GUIDED mode
-takeoff(10) # Vehicle must be in GUIDED mode
-gotoPostitionLocalNED(5,2,-15)
+takeoff(3) # Vehicle must be in GUIDED mode
+gotoPostitionLocalNED(5,2,-4)
 returnToLaunch()
 
 ################# Mission end ####################
