@@ -21,18 +21,18 @@ vehicle = Connect()
 
 #### Step 2: Observe state until "take control" condition is met ####
 
-# ch7Obs=Observe(vehicle.channels["7"], 2001)
-# print "Waiting for condition to be met"
-# 
-# ch7Obs.update(vehicle.channels["7"])
-# while not ch7Obs.geq(ch7Obs.value-200):	# 200 PWM tolerance
-# 	timeLoop = time.clock()
-# 	while (time.clock()-timeLoop) < 0.02:  # Update rate of vehicle class is 50 Hz
-# 		pass  # Do not continue until there is new data to update
-# 	ch7Obs.update(vehicle.channels["7"])
-# 	print "CH7 current value: %i   CH7 target: %i" % (ch7Obs.variable, ch7Obs.value)
-# 
-# print "Condition met"
+ch7Obs=Observe(vehicle.channels["7"], 2001)
+print "Waiting for condition to be met"
+
+ch7Obs.update(vehicle.channels["7"])
+while not ch7Obs.geq(ch7Obs.value-200):	# 200 PWM tolerance
+	timeLoop = time.clock()
+	while (time.clock()-timeLoop) < 0.2:
+		pass  # Do not continue until there is new data to update
+	ch7Obs.update(vehicle.channels["7"])
+	print "CH7 current value: %i   CH7 target: %i" % (ch7Obs.variable, ch7Obs.value)
+
+print "Condition met"
 sound.beep(440, 200)
 
 
