@@ -13,7 +13,7 @@ ECHO Remember to connect Mission Planner manually to UDP 127.0.0.1:14551
 ECHO.
 
 set /p scriptID=Select script to be executed: 
-START "DRONEKIT-SCRIPT" /D "C:\Users\Usuario\Google Drive\TFG Alvaro Melgosa Pascual\DRONEKIT\" %scriptID%
+START "DRONEKIT-SCRIPT" /D "C:\Users\Usuario\Documents\GitHub\quadcopters-tfg-lvaro\Dronekit" %scriptID%
 
 ECHO.
 ::set /p dummy=Press Enter to END SIMULATION 

@@ -107,7 +107,7 @@ def wait(seconds):
 	return True
 
 
-autoMove = Auto(do_move, wait, [1,10,[1,0,0]], 10)
+autoMove = Auto(do_move, wait, [5,10,[1,0,0]], 10)
 
 
 print "Starting autonomous flight"
