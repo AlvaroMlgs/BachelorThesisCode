@@ -28,7 +28,7 @@ class Control:
 					self.takeFun
 				else:
 					self.takeFun(self.takeArgs)
-				self.takenFlag.wait(5)	# Lock thread until released via self.takenFlag.set() in self.check() method or timed out
+				self.takenFlag.wait(0.02)	# Lock thread until released via self.takenFlag.set() in self.check() method or timed out
 
 		takeClass=thrd(takeThrd)
 		takeClass.name="takeClass"
