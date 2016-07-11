@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+import signal
 
 class Sonar():
 	
@@ -35,11 +36,16 @@ class Sonar():
 		time.sleep(1e-5)     # 10 microseconds
 		GPIO.output(self.trigPin,False)
 
-		while GPIO.input(self.echoPin)==0:  # Overwrite pulseStart until pulse is detected
-			pulseStart=time.time()-self.initialTime
+	#	while GPIO.input(self.echoPin)==0:  # Overwrite pulseStart until pulse is detected
+	#		pulseStart=time.time()-self.initialTime
 
-		while GPIO.input(self.echoPin)==1:  # Overwrite pulseEnd until pulse has ended
-			pulseEnd=time.time()-self.initialTime
+	#	while GPIO.input(self.echoPin)==1:  # Overwrite pulseEnd until pulse has ended
+	#		pulseEnd=time.time()-self.initialTime
+
+		GPIO.wait_for_edge(self.echoPin,GPIO.RISING)
+		pulseStart=time.time()-self.initialTime
+		GPIO.wait_for_edge(self.echoPin,GPIO.FALLING)
+		pulseEnd=time.time()-self.initialTime
 
 		try:
 
@@ -50,11 +56,10 @@ class Sonar():
 			if sonarDistance>4:	# Sensor not accurate for higher values
 				sonarDistance=-1
 
-			# print "Sonar distance: %.2f [m]" % sonarDistance
+			#print "Sonar distance: %.2f [m]" % sonarDistance
 
 		except:
             
-			# print GPIO.input(self.echoPin)
 			print "Error reading the distance. Trying again"
 
 		else:
@@ -71,6 +76,8 @@ class Sonar():
 				for t in range(len(self.timeArray)-1,0,-1):
 					self.timeArray[t]=self.timeArray[t-1]
 				self.timeArray[0]=(pulseEnd+pulseStart)/2
+
+			SONARINUSE=False
 
 			return self.distance
 
