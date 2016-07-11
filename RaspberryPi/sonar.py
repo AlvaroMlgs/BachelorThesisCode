@@ -42,9 +42,9 @@ class Sonar():
 	#	while GPIO.input(self.echoPin)==1:  # Overwrite pulseEnd until pulse has ended
 	#		pulseEnd=time.time()-self.initialTime
 
-		GPIO.wait_for_edge(self.echoPin,GPIO.RISING)
+		GPIO.wait_for_edge(self.echoPin,GPIO.RISING,timeout=100)
 		pulseStart=time.time()-self.initialTime
-		GPIO.wait_for_edge(self.echoPin,GPIO.FALLING)
+		GPIO.wait_for_edge(self.echoPin,GPIO.FALLING,timeout=100)
 		pulseEnd=time.time()-self.initialTime
 
 		try:
@@ -82,7 +82,7 @@ class Sonar():
 			return self.distance
 
 	
-	def measureVelocity(self):
+	def computeVelocity(self):
 
 		try:	# To avoid divisions by 0 from throwing an error
 			# Backward differences with a three-data-points stencil
