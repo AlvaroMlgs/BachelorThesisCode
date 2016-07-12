@@ -54,7 +54,7 @@ class Sonar():
 			sonarDistance=(pulseDuration/2.0)*343
 
 			if sonarDistance>4:	# Sensor not accurate for higher values
-				sonarDistance=-1
+				sonarDistance=None
 
 			#print "Sonar distance: %.2f [m]" % sonarDistance
 
