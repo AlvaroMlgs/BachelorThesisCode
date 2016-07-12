@@ -4,7 +4,7 @@ import signal
 
 class Sonar():
 	
-	def __init__(self,trigPin,echoPin):
+	def __init__(self,trigPin,echoPin,bufferLen=10):
 
 		GPIO.setmode(GPIO.BCM)
 
@@ -15,13 +15,13 @@ class Sonar():
 		GPIO.setup(self.echoPin,GPIO.IN)
 
 		self.distance=None
-		self.distanceBuffer=[None]*4
+		self.distanceBuffer=[None]*bufferLen
 
 		self.initialTime=time.time()
-		self.timeArray=[None]*4
+		self.timeArray=[None]*bufferLen
 
 		self.velocity=None
-		self.velocityBuffer=[None]*4
+		self.velocityBuffer=[None]*bufferLen
 
 	def __del__(self):
 		GPIO.cleanup()
