@@ -2,9 +2,11 @@ import RPi.GPIO as GPIO
 import time
 import signal
 
+from threads import thrd
+
 class Sonar():
 	
-	def __init__(self,trigPin,echoPin,bufferLen=10):
+	def __init__(self,trigPin,echoPin,bufferLen=5):
 
 		GPIO.setmode(GPIO.BCM)
 
@@ -14,11 +16,11 @@ class Sonar():
 		GPIO.setup(self.trigPin,GPIO.OUT)
 		GPIO.setup(self.echoPin,GPIO.IN)
 
-		self.distance=None
-		self.distanceBuffer=[None]*bufferLen
-
 		self.initialTime=time.time()
 		self.timeArray=[None]*bufferLen
+
+		self.distance=None
+		self.distanceBuffer=[None]*bufferLen
 
 		self.velocity=None
 		self.velocityBuffer=[None]*bufferLen
@@ -29,12 +31,16 @@ class Sonar():
 
 	def measureDistance(self):
 
-		time.sleep(2e-6)	# 2 microseconds
-		GPIO.output(self.trigPin,False)
-		time.sleep(2e-6)    # 2 microseconds
-		GPIO.output(self.trigPin,True)
-		time.sleep(1e-5)     # 10 microseconds
-		GPIO.output(self.trigPin,False)
+		time.sleep(0.05)	# Wait a bit to avoid interference from previous measurement
+
+		def triggerSonar():
+			GPIO.output(self.trigPin,False)
+			time.sleep(2e-6)    # 2 microseconds
+			GPIO.output(self.trigPin,True)
+			time.sleep(1e-5)     # 10 microseconds
+			GPIO.output(self.trigPin,False)
+		thrdTriggerSonar=thrd(triggerSonar)
+		thrdTriggerSonar.start()
 
 	#	while GPIO.input(self.echoPin)==0:  # Overwrite pulseStart until pulse is detected
 	#		pulseStart=time.time()-self.initialTime
@@ -54,9 +60,7 @@ class Sonar():
 			sonarDistance=(pulseDuration/2.0)*343
 
 			if sonarDistance>4:	# Sensor not accurate for higher values
-				sonarDistance=None
-
-			#print "Sonar distance: %.2f [m]" % sonarDistance
+				sonarDistance=-1
 
 		except:
             
@@ -76,8 +80,6 @@ class Sonar():
 				for t in range(len(self.timeArray)-1,0,-1):
 					self.timeArray[t]=self.timeArray[t-1]
 				self.timeArray[0]=(pulseEnd+pulseStart)/2
-
-			SONARINUSE=False
 
 			return self.distance
 

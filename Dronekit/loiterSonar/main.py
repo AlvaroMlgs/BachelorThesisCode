@@ -22,47 +22,58 @@ vehicle = Connect()
 
 sonars=[Sonar(2,3),Sonar(14,15),Sonar(17,18)]
 
-for c in range(3):	# Measure several times to have data on velocity
+for c in range(10):	# Measure several times to have data on velocity
 	for s in range(3):
 		sonars[s].measureDistance()
-		#sonars[s].computeVelocity()
-
-try:	# In the case of bad measurement, avoid errors related to None type
-	avgDistance=numpy.mean([sonars[0].distance,sonars[1].distance,sonars[2].distance])
-	print "Mean sonar distance: %.3f [m]" % avgDistance
-except: pass
-
-
-""" Maybe at a later time
-Tcollision=min(sonars[0].distance,sonars[1].distance,sonars[2].distance)/max(sonars[0].velocity,sonars[1].velocity,sonars[2].velocity)	# Time to collision at current velocity
-Treaction=0		# Time for the script to take control
-Tstop=0		# Time for the script to stop the vehicle (at a given velocity)
-Tmargin=0	# Accounting for clearance to obstacle and measurement errors
-
-Tsafe=Tcollision-Treaction-Tstop-Tmargin
-"""
-
-#while not Tsafe < 0 and not min(sonars[0].distance,sonars[1].distance,sonars[2].distance) < 0.5:
-while not avgDistance < 1:
-
-	for s in range(3):
-		sonars[s].measureDistance()
-		#sonars[s].computeVelocity()
+		sonars[s].computeVelocity()
 
 	try:	# In the case of bad measurement, avoid errors related to None type
-		avgDistance=numpy.mean([sonars[0].distance,sonars[1].distance,sonars[2].distance])
-		print "Mean sonar distance: %.3f [m]" % avgDistance
+
+		stdDistance=numpy.std([numpy.mean(sonars[0].distanceBuffer),numpy.mean(sonars[1].distanceBuffer),numpy.mean(sonars[2].distanceBuffer)])
+
+		avgDistance=numpy.mean([numpy.mean(sonars[0].distanceBuffer),numpy.mean(sonars[1].distanceBuffer),numpy.mean(sonars[2].distanceBuffer)])
+		avgVelocity=numpy.mean([numpy.mean(sonars[0].velocityBuffer),numpy.mean(sonars[1].velocityBuffer),numpy.mean(sonars[2].velocityBuffer)])
+		#print "Mean sonar distance: %.3f [m]  STD: %.4f" % (avgDistance,stdDistance)
+
+		#Tcollision=min(sonars[0].distance,sonars[1].distance,sonars[2].distance)/max(sonars[0].velocity,sonars[1].velocity,sonars[2].velocity)	# Time to collision at current velocity
+		Tcollision=avgDistance/avgVelocity
+		Treaction=0		# Time for the script to take control
+		Tstop=1		# Time for the script to stop the vehicle (at a given velocity)
+		Tmargin=0	# Accounting for clearance to obstacle and measurement errors
+
+		Tsafe=Tcollision-Treaction-Tstop-Tmargin
+
+		print "Distance: %.3f [m] std: %.4f  Velocity: %.2f [m/s]  Tcollision: %.2f [s]  Tsafe: %.2f [s]" % (avgDistance,stdDistance,avgVelocity,Tcollision,Tsafe)
+
 	except: pass
 
-	"""
-	Tcollision=min(sonars[0].distance,sonars[1].distance,sonars[2].distance)/max(sonars[0].velocity,sonars[1].velocity,sonars[2].velocity)	# Time to collision at current velocity
-	Treaction=0		# Time for the script to take control
-	Tstop=0		# Time for the script to stop the vehicle (at a given velocity)
-	Tmargin=0	# Accounting for clearance to obstacle and measurement errors
+while not (Tsafe < 0 and Tcollision > 0):
+#while not avgDistance < 1:
 
-	Tsafe=Tcollision-Treaction-Tstop-Tmargin
-	"""
+	for s in range(3):
+		sonars[s].measureDistance()
+		sonars[s].computeVelocity()
 
+	try:	# In the case of bad measurement, avoid errors related to None type
+
+		stdDistance=numpy.std([numpy.mean(sonars[0].distanceBuffer),numpy.mean(sonars[1].distanceBuffer),numpy.mean(sonars[2].distanceBuffer)])
+
+		if stdDistance < 0.1:	# Do not consider large discrepancies between sensors
+			avgDistance=numpy.mean([numpy.mean(sonars[0].distanceBuffer),numpy.mean(sonars[1].distanceBuffer),numpy.mean(sonars[2].distanceBuffer)])
+			avgVelocity=numpy.mean([numpy.mean(sonars[0].velocityBuffer),numpy.mean(sonars[1].velocityBuffer),numpy.mean(sonars[2].velocityBuffer)])
+			#print "Mean sonar distance: %.3f [m]  STD: %.4f" % (avgDistance,stdDistance)
+
+			#Tcollision=min(sonars[0].distance,sonars[1].distance,sonars[2].distance)/max(sonars[0].velocity,sonars[1].velocity,sonars[2].velocity)	# Time to collision at current velocity
+			Tcollision=avgDistance/avgVelocity
+			Treaction=0		# Time for the script to take control
+			Tstop=1		# Time for the script to stop the vehicle (at a given velocity)
+			Tmargin=0	# Accounting for clearance to obstacle and measurement errors
+
+			Tsafe=Tcollision-Treaction-Tstop-Tmargin
+
+			print "Distance: %.3f [m] std: %.4f  Velocity: %.2f [m/s]  Tcollision: %.2f [s]  Tsafe: %.2f [s]" % (avgDistance,stdDistance,avgVelocity,Tcollision,Tsafe)
+
+	except: pass
 
 print "Condition met"
 sound.beep(440, 200)
