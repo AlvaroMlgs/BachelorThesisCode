@@ -1,8 +1,8 @@
-
 # Stock modules
 import time
 import dronekit
 import threading
+import numpy
 
 # Custom modules
 from connect import Connect  # For connecting to the vehicle
@@ -20,32 +20,50 @@ vehicle = Connect()
 
 #### Step 2: Observe state until "take control" condition is met ####
 
+initYaw=vehicle.heading	# Temporal fix (I hope) for step 4
+
 sonars=[Sonar(2,3),Sonar(14,15),Sonar(17,18)]
 
 for c in range(3):	# Measure several times to have data on velocity
 	for s in range(3):
 		sonars[s].measureDistance()
-		sonars[s].computeVelocity()
+		#sonars[s].computeVelocity()
 
+try:	# In the case of bad measurement, avoid errors related to None type
+	avgDistance=numpy.mean([sonars[0].distance,sonars[1].distance,sonars[2].distance])
+	print "Mean sonar distance: %.3f [m]" % avgDistance
+except: pass
+
+
+""" Maybe at a later time
 Tcollision=min(sonars[0].distance,sonars[1].distance,sonars[2].distance)/max(sonars[0].velocity,sonars[1].velocity,sonars[2].velocity)	# Time to collision at current velocity
 Treaction=0		# Time for the script to take control
 Tstop=0		# Time for the script to stop the vehicle (at a given velocity)
 Tmargin=0	# Accounting for clearance to obstacle and measurement errors
 
 Tsafe=Tcollision-Treaction-Tstop-Tmargin
+"""
 
-while not Tsafe < 0 and not min(sonars[0].distance,sonars[1].distance,sonars[2].distance) < 0.5:
+#while not Tsafe < 0 and not min(sonars[0].distance,sonars[1].distance,sonars[2].distance) < 0.5:
+while not avgDistance < 1:
 
 	for s in range(3):
 		sonars[s].measureDistance()
-		sonars[s].computeVelocity()
+		#sonars[s].computeVelocity()
 
+	try:	# In the case of bad measurement, avoid errors related to None type
+		avgDistance=numpy.mean([sonars[0].distance,sonars[1].distance,sonars[2].distance])
+		print "Mean sonar distance: %.3f [m]" % avgDistance
+	except: pass
+
+	"""
 	Tcollision=min(sonars[0].distance,sonars[1].distance,sonars[2].distance)/max(sonars[0].velocity,sonars[1].velocity,sonars[2].velocity)	# Time to collision at current velocity
 	Treaction=0		# Time for the script to take control
 	Tstop=0		# Time for the script to stop the vehicle (at a given velocity)
 	Tmargin=0	# Accounting for clearance to obstacle and measurement errors
 
 	Tsafe=Tcollision-Treaction-Tstop-Tmargin
+	"""
 
 
 print "Condition met"

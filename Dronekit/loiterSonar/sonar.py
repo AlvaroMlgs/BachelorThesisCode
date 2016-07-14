@@ -32,7 +32,6 @@ class Sonar():
 	def measureDistance(self):
 
 		time.sleep(0.05)	# Wait a bit to avoid interference from previous measurement
-		print "%.4fs> Wait is over" % time.time()
 
 		def triggerSonar():
 			GPIO.output(self.trigPin,False)
@@ -40,7 +39,6 @@ class Sonar():
 			GPIO.output(self.trigPin,True)
 			time.sleep(1e-5)     # 10 microseconds
 			GPIO.output(self.trigPin,False)
-			print "%.4fs> Sonar triggered" % time.time()
 		thrdTriggerSonar=thrd(triggerSonar)
 		thrdTriggerSonar.start()
 
@@ -50,13 +48,10 @@ class Sonar():
 	#	while GPIO.input(self.echoPin)==1:  # Overwrite pulseEnd until pulse has ended
 	#		pulseEnd=time.time()-self.initialTime
 
-		print "%.4fs> Listening for echo" % time.time()
-		a=GPIO.wait_for_edge(self.echoPin,GPIO.RISING,timeout=100)
+		GPIO.wait_for_edge(self.echoPin,GPIO.RISING,timeout=100)
 		pulseStart=time.time()-self.initialTime
-		print "%.4fs> Up edge detected" % time.time()
 		GPIO.wait_for_edge(self.echoPin,GPIO.FALLING,timeout=100)
 		pulseEnd=time.time()-self.initialTime
-		print "%.4fs> Down edge detected" % time.time()
 
 		try:
 
