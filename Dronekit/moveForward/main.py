@@ -1,4 +1,3 @@
-
 # Stock modules
 import time
 import math
@@ -14,6 +13,7 @@ import sound  # For playing sounds on the background (without affecting main thr
 import angle  # For operations with angles (to avoid discontinuities)
 from control import Control  # For taking and giving control to the pilot, checking if it was successful
 from auto import Auto  # For controling autonomous flight
+
 
 #### Step 1: Connect to vehicle ####
 
