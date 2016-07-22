@@ -105,7 +105,7 @@ script.grid(row=0,column=2,padx=5,pady=5,ipadx=5,ipady=5)
 
 def runScript(route):
 	openCMD='START CMD /K '
-	scriptRoute='"C:\\Users\\Usuario\\Documents\\GitHub\\quadcopters-tfg-lvaro\\Dronekit\\"' + route
+	scriptRoute='"C:\\Users\\Usuario\\Documents\\GitHub\\quadcopters-tfg-lvaro\\Dronekit\\' + route + '\\main.py"'
 	subprocess.call(openCMD + scriptRoute, shell=True)
 
 scriptLabel=Tkinter.Label(script,text="File location")
