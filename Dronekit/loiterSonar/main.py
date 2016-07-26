@@ -1,4 +1,5 @@
 # Stock modules
+import os
 import sys
 import logging
 import time
@@ -17,7 +18,7 @@ from auto import Auto  # For controling autonomous flight
 from sonar import Sonar	# For sonar sensors operation
 
 ## Set-up logging ##
-logFilename=".\\logs\\"+str(time.strftime("%Y%m%d-%H%M%S"))+".txt"
+logFilename=os.path.dirname(os.path.realpath(__file__))+"/logs/"+str(time.strftime("%Y%m%d-%H%M%S"))+".txt"
 
 fid=open(logFilename,"w")	# Open and then close to create a new file
 fid.close()
@@ -27,10 +28,15 @@ logging.basicConfig(filename=logFilename,level=logging.DEBUG,format='%(asctime)s
 
 #### Step 1: Connect to vehicle ####
 
-initTime=time.time()
-print "%.3fs>> Start of script" % (time.time()-initTime)
+logStr = "\nStart of script"
+print logStr
+logging.info(logStr)
+
 vehicle = Connect()
-print "%.3fs>> Vehicle connected" % (time.time()-initTime)
+
+logStr = "Vehicle connected"
+print logStr
+logging.info(logStr)
 
 #### Step 2: Observe state until "take control" condition is met ####
 
@@ -56,7 +62,7 @@ for c in range(10):		# Pre-populate arrays
 		logging.info(logStr)
 
 
-logStr = "%.3fs>> Starting measurements" % (time.time()-initTime)
+logStr = "Starting measurements"
 print logStr
 logging.info(logStr)
 
@@ -72,12 +78,16 @@ while not (sonars[s].Tsafe < 0 and sonars[s].Tcollision > 0):
 		logStr = "S%d>> Distance: %.3f [m] Velocity: %.2f [m/s]  Tcollision: %.2f [s]  Tsafe: %.2f [s]" % (s,sonars[s].avgDistance,sonars[s].avgVelocity,sonars[s].Tcollision,sonars[s].Tsafe)
 		print logStr
 		logging.info(logStr)
-	print ""
+
+	logStr = ""
+	print logStr
+	logging.info(logStr)
 
 
 logStr = "Condition met"
 print logStr
 logging.info(logStr)
+
 sound.beep(440, 200)
 
 
@@ -103,6 +113,7 @@ ctrl.checkTake()
 
 while not threading.activeCount() <= 3:
 	time.sleep(0.02)
+
 logStr = "Control taken"
 print logStr
 logging.info(logStr)
@@ -128,13 +139,14 @@ ctrl.checkGive()
 
 while not threading.activeCount() <= 3:
 	time.sleep(0.02)
-logStr = "%.3fs>> Control returned" % (time.time()-initTime)
+
+logStr = "Control returned"
 print logStr
 logging.info(logStr)
 
 sound.tripleBeep(700, 150, 600, 150, 500, 300)
 
-logStr = "\nTerminating script"
+logStr = "\nTerminating script\n"
 print logStr
 logging.info(logStr)
 vehicle.close()
