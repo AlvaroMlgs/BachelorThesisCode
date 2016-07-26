@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 import signal
+import numpy
 
 from threads import thrd
 
@@ -16,14 +17,22 @@ class Sonar():
 		GPIO.setup(self.trigPin,GPIO.OUT)
 		GPIO.setup(self.echoPin,GPIO.IN)
 
+		self.distance=100
+		self.distanceBuffer=[100]*bufferLen
+		self.avgDistance=100
+
+		self.velocity=1e-5
+		self.velocityBuffer=[1e-5]*bufferLen
+		self.avgVelocity=1e-5
+
 		self.initialTime=time.time()
-		self.timeArray=[None]*bufferLen
+		self.timeArray=[time.time()-self.initialTime]*bufferLen
 
-		self.distance=None
-		self.distanceBuffer=[None]*bufferLen
-
-		self.velocity=None
-		self.velocityBuffer=[None]*bufferLen
+		self.Tcollision=100
+		self.Treaction=0
+		self.Tstop=1
+		self.Tmargin=0
+		self.Tsafe=100
 
 	def __del__(self):
 		GPIO.cleanup()
@@ -44,6 +53,7 @@ class Sonar():
 
 	#	while GPIO.input(self.echoPin)==0:  # Overwrite pulseStart until pulse is detected
 	#		pulseStart=time.time()-self.initialTime
+			# Performing rolling average over the buffers to reduce noise-related errors
 
 	#	while GPIO.input(self.echoPin)==1:  # Overwrite pulseEnd until pulse has ended
 	#		pulseEnd=time.time()-self.initialTime
@@ -59,36 +69,35 @@ class Sonar():
             
 			sonarDistance=(pulseDuration/2.0)*343
 
-			if sonarDistance>4:	# Sensor not accurate for higher values
-				sonarDistance=-1
-
-		except:
-            
-			print "Error reading the distance. Trying again"
-
-		else:
-
-			if sonarDistance!=-1:
-				
+			if sonarDistance<4:	# Sensor not accurate for higher values
 				self.distance=sonarDistance
+
 				# Update buffer
 				for b in range(len(self.distanceBuffer)-1,0,-1):	# Shift position of the old values
 					self.distanceBuffer[b]=self.distanceBuffer[b-1]
 				self.distanceBuffer[0]=self.distance	# Include latest measurement
+
+				# Update filtered distance
+				self.avgDistance=numpy.mean(self.distanceBuffer)
 
 				# Update time array
 				for t in range(len(self.timeArray)-1,0,-1):
 					self.timeArray[t]=self.timeArray[t-1]
 				self.timeArray[0]=(pulseEnd+pulseStart)/2
 
-			return self.distance
+				return self.distance
 
-	
+		except:
+            
+			print "Error reading the distance. Trying again"
+
+
 	def computeVelocity(self):
 
 		try:	# To avoid divisions by 0 from throwing an error
-			# Backward differences with a three-data-points stencil
-			self.velocity=(-2*self.distanceBuffer[0]+self.distanceBuffer[1]+self.distanceBuffer[2])/((self.timeArray[0]-self.timeArray[1])+(self.timeArray[0]-self.timeArray[2]))
+
+			# Backward differences with a two-data-points stencil
+			self.velocity=(self.distanceBuffer[1]-self.distanceBuffer[0])/(self.timeArray[0]-self.timeArray[1])
 
 		except:
 			pass
@@ -98,9 +107,17 @@ class Sonar():
 				self.velocityBuffer[v]=self.velocityBuffer[v-1]
 			self.velocityBuffer[0]=self.velocity
 
-			return self.velocity
-		
+			self.avgVelocity=numpy.mean(self.velocityBuffer)
 
+			return self.avgVelocity
+		
+	
+	def calculateCollision(self):
+		
+		self.Tcollision=self.avgDistance/self.avgVelocity
+		self.Tsafe=self.Tcollision-self.Treaction-self.Tstop-self.Tmargin
+
+		return self.Tsafe
 
 
 

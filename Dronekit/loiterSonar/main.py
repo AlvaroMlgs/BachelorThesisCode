@@ -16,66 +16,49 @@ from sonar import Sonar	# For sonar sensors operation
 
 #### Step 1: Connect to vehicle ####
 
+initTime=time.time()
+print "%.3fs>> Start of script" % (time.time()-initTime)
 vehicle = Connect()
+print "%.3fs>> Vehicle connected" % (time.time()-initTime)
 
 #### Step 2: Observe state until "take control" condition is met ####
 
-sonars=[Sonar(2,3),Sonar(14,15),Sonar(17,18)]
+sonars=[Sonar(3,4),Sonar(14,15),Sonar(17,18)]
 
+"""
 for c in range(10):	# Measure several times to have data on velocity
 	for s in range(3):
 		sonars[s].measureDistance()
 		sonars[s].computeVelocity()
+"""
 
-	try:	# In the case of bad measurement, avoid errors related to None type
-
-		stdDistance=numpy.std([numpy.mean(sonars[0].distanceBuffer),numpy.mean(sonars[1].distanceBuffer),numpy.mean(sonars[2].distanceBuffer)])
-
-		avgDistance=numpy.mean([numpy.mean(sonars[0].distanceBuffer),numpy.mean(sonars[1].distanceBuffer),numpy.mean(sonars[2].distanceBuffer)])
-		avgVelocity=numpy.mean([numpy.mean(sonars[0].velocityBuffer),numpy.mean(sonars[1].velocityBuffer),numpy.mean(sonars[2].velocityBuffer)])
-		#print "Mean sonar distance: %.3f [m]  STD: %.4f" % (avgDistance,stdDistance)
-
-		#Tcollision=min(sonars[0].distance,sonars[1].distance,sonars[2].distance)/max(sonars[0].velocity,sonars[1].velocity,sonars[2].velocity)	# Time to collision at current velocity
-		Tcollision=avgDistance/avgVelocity
-		Treaction=0		# Time for the script to take control
-		Tstop=1		# Time for the script to stop the vehicle (at a given velocity)
-		Tmargin=0	# Accounting for clearance to obstacle and measurement errors
-
-		Tsafe=Tcollision-Treaction-Tstop-Tmargin
-
-		print "Distance: %.3f [m] std: %.4f  Velocity: %.2f [m/s]  Tcollision: %.2f [s]  Tsafe: %.2f [s]" % (avgDistance,stdDistance,avgVelocity,Tcollision,Tsafe)
-
-	except: pass
-
-while not (Tsafe < 0 and Tcollision > 0):
-#while not avgDistance < 1:
+for c in range(10):		# Pre-populate arrays
+	print ""
 
 	for s in range(3):
 		sonars[s].measureDistance()
 		sonars[s].computeVelocity()
+		sonars[s].calculateCollision()
 
-	try:	# In the case of bad measurement, avoid errors related to None type
+		print "S%d>> Distance: %.3f [m] Velocity: %.2f [m/s]  Tcollision: %.2f [s]  Tsafe: %.2f [s]" % (s,sonars[s].avgDistance,sonars[s].avgVelocity,sonars[s].Tcollision,sonars[s].Tsafe)
 
-		stdDistance=numpy.std([numpy.mean(sonars[0].distanceBuffer),numpy.mean(sonars[1].distanceBuffer),numpy.mean(sonars[2].distanceBuffer)])
 
-		if stdDistance < 0.1:	# Do not consider large discrepancies between sensors
-			avgDistance=numpy.mean([numpy.mean(sonars[0].distanceBuffer),numpy.mean(sonars[1].distanceBuffer),numpy.mean(sonars[2].distanceBuffer)])
-			avgVelocity=numpy.mean([numpy.mean(sonars[0].velocityBuffer),numpy.mean(sonars[1].velocityBuffer),numpy.mean(sonars[2].velocityBuffer)])
-			#print "Mean sonar distance: %.3f [m]  STD: %.4f" % (avgDistance,stdDistance)
+print "%.3fs>> Starting measurements" % (time.time()-initTime)
+while not (sonars[s].Tsafe < 0 and sonars[s].Tcollision > 0):
+#while not avgDistance < 1:
 
-			#Tcollision=min(sonars[0].distance,sonars[1].distance,sonars[2].distance)/max(sonars[0].velocity,sonars[1].velocity,sonars[2].velocity)	# Time to collision at current velocity
-			Tcollision=avgDistance/avgVelocity
-			Treaction=0		# Time for the script to take control
-			Tstop=1		# Time for the script to stop the vehicle (at a given velocity)
-			Tmargin=0	# Accounting for clearance to obstacle and measurement errors
+	for s in range(3):
 
-			Tsafe=Tcollision-Treaction-Tstop-Tmargin
+		sonars[s].measureDistance()
+		sonars[s].computeVelocity()
+		sonars[s].calculateCollision()
 
-			print "Distance: %.3f [m] std: %.4f  Velocity: %.2f [m/s]  Tcollision: %.2f [s]  Tsafe: %.2f [s]" % (avgDistance,stdDistance,avgVelocity,Tcollision,Tsafe)
 
-	except: pass
+		print "S%d>> Distance: %.3f [m] Velocity: %.2f [m/s]  Tcollision: %.2f [s]  Tsafe: %.2f [s]" % (s,sonars[s].avgDistance,sonars[s].avgVelocity,sonars[s].Tcollision,sonars[s].Tsafe)
+	print ""
 
-print "Condition met"
+
+print "%.3fs>> Condition met" % (time.time()-initTime)
 sound.beep(440, 200)
 
 
@@ -92,24 +75,24 @@ def checkMode(mode):
 ctrl = Control(takeFun=changeMode, checkTakeFun=checkMode, giveFun=changeMode, checkGiveFun=checkMode,
 			   takeArgs="LOITER", checkTakeArgs="LOITER", giveArgs="ALT_HOLD", checkGiveArgs="ALT_HOLD")
 
-print "Taking control"
+print "%.3fs>> Taking control" % (time.time()-initTime)
 ctrl.take()
 ctrl.checkTake()
 
 while not threading.activeCount() <= 3:
 	time.sleep(0.02)
-print "Control taken"
+print "%.3fs>> Control taken" % (time.time()-initTime)
 
 
 #### Step 4: Autonomous flight ####
 
 time.sleep(10)	# Mission does nothing, just loiters for 10 seconds
 
-print "Mission finished"
+print "%.3fs>> Mission finished" % (time.time()-initTime)
 
 #### Step 5: Return control to the pilot ####
 
-print "Returning control"
+print "%.3fs>> Returning control" % (time.time()-initTime)
 
 # Recovering ctrl class instance that was created in step 3
 ctrl.give()
@@ -117,10 +100,11 @@ ctrl.checkGive()
 
 while not threading.activeCount() <= 3:
 	time.sleep(0.02)
+print "%.3fs>> Control returned" % (time.time()-initTime)
 
 sound.tripleBeep(700, 150, 600, 150, 500, 300)
 
-print "\nTerminating script"
+print "%.3fs>> Terminating script" % (time.time()-initTime)
 vehicle.close()
 
 

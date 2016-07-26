@@ -6,10 +6,10 @@ import threading
 import matplotlib.pyplot as plt
 import numpy as np
 
-#sonar1=Sonar(2,3)
+#sonar1=Sonar(3,4)
 #sonar2=Sonar(14,15)
 #sonar3=Sonar(17,18)
-sonars=[Sonar(2,3,bufferLen=10),Sonar(14,15,bufferLen=10),Sonar(17,18,bufferLen=10)]
+sonars=[Sonar(3,4),Sonar(14,15),Sonar(17,18)]
 
 """
 plt.figure("distance")
@@ -30,7 +30,7 @@ for c in range(5):	# Pre-populate buffers
 
 while True:
 	
-	for s in range(1):
+	for s in range(3):
 		sonars[s].measureDistance()
 		sonars[s].computeVelocity()
 
