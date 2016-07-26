@@ -1,4 +1,6 @@
 # Stock modules
+import sys
+import logging
 import time
 import dronekit
 import threading
@@ -13,6 +15,15 @@ import angle  # For operations with angles (to avoid discontinuities)
 from control import Control  # For taking and giving control to the pilot, checking if it was successful
 from auto import Auto  # For controling autonomous flight
 from sonar import Sonar	# For sonar sensors operation
+
+## Set-up logging ##
+logFilename=".\\logs\\"+str(time.strftime("%Y%m%d-%H%M%S"))+".txt"
+
+fid=open(logFilename,"w")	# Open and then close to create a new file
+fid.close()
+
+logging.basicConfig(filename=logFilename,level=logging.DEBUG,format='%(asctime)s %(name)s:%(levelname)s %(message)s')
+
 
 #### Step 1: Connect to vehicle ####
 
@@ -40,10 +51,15 @@ for c in range(10):		# Pre-populate arrays
 		sonars[s].computeVelocity()
 		sonars[s].calculateCollision()
 
-		print "S%d>> Distance: %.3f [m] Velocity: %.2f [m/s]  Tcollision: %.2f [s]  Tsafe: %.2f [s]" % (s,sonars[s].avgDistance,sonars[s].avgVelocity,sonars[s].Tcollision,sonars[s].Tsafe)
+		logStr = "S%d>> Distance: %.3f [m] Velocity: %.2f [m/s]  Tcollision: %.2f [s]  Tsafe: %.2f [s]" % (s,sonars[s].avgDistance,sonars[s].avgVelocity,sonars[s].Tcollision,sonars[s].Tsafe)
+		print logStr
+		logging.info(logStr)
 
 
-print "%.3fs>> Starting measurements" % (time.time()-initTime)
+logStr = "%.3fs>> Starting measurements" % (time.time()-initTime)
+print logStr
+logging.info(logStr)
+
 while not (sonars[s].Tsafe < 0 and sonars[s].Tcollision > 0):
 #while not avgDistance < 1:
 
@@ -53,12 +69,15 @@ while not (sonars[s].Tsafe < 0 and sonars[s].Tcollision > 0):
 		sonars[s].computeVelocity()
 		sonars[s].calculateCollision()
 
-
-		print "S%d>> Distance: %.3f [m] Velocity: %.2f [m/s]  Tcollision: %.2f [s]  Tsafe: %.2f [s]" % (s,sonars[s].avgDistance,sonars[s].avgVelocity,sonars[s].Tcollision,sonars[s].Tsafe)
+		logStr = "S%d>> Distance: %.3f [m] Velocity: %.2f [m/s]  Tcollision: %.2f [s]  Tsafe: %.2f [s]" % (s,sonars[s].avgDistance,sonars[s].avgVelocity,sonars[s].Tcollision,sonars[s].Tsafe)
+		print logStr
+		logging.info(logStr)
 	print ""
 
 
-print "%.3fs>> Condition met" % (time.time()-initTime)
+logStr = "Condition met"
+print logStr
+logging.info(logStr)
 sound.beep(440, 200)
 
 
@@ -75,24 +94,33 @@ def checkMode(mode):
 ctrl = Control(takeFun=changeMode, checkTakeFun=checkMode, giveFun=changeMode, checkGiveFun=checkMode,
 			   takeArgs="LOITER", checkTakeArgs="LOITER", giveArgs="ALT_HOLD", checkGiveArgs="ALT_HOLD")
 
-print "%.3fs>> Taking control" % (time.time()-initTime)
+logStr = "Taking control"
+print logStr
+logging.info(logStr)
+
 ctrl.take()
 ctrl.checkTake()
 
 while not threading.activeCount() <= 3:
 	time.sleep(0.02)
-print "%.3fs>> Control taken" % (time.time()-initTime)
+logStr = "Control taken"
+print logStr
+logging.info(logStr)
 
 
 #### Step 4: Autonomous flight ####
 
 time.sleep(10)	# Mission does nothing, just loiters for 10 seconds
 
-print "%.3fs>> Mission finished" % (time.time()-initTime)
+logStr = "Mission finished"
+print logStr
+logging.info(logStr)
 
 #### Step 5: Return control to the pilot ####
 
-print "%.3fs>> Returning control" % (time.time()-initTime)
+logStr = "Returning control"
+print logStr
+logging.info(logStr)
 
 # Recovering ctrl class instance that was created in step 3
 ctrl.give()
@@ -100,11 +128,15 @@ ctrl.checkGive()
 
 while not threading.activeCount() <= 3:
 	time.sleep(0.02)
-print "%.3fs>> Control returned" % (time.time()-initTime)
+logStr = "%.3fs>> Control returned" % (time.time()-initTime)
+print logStr
+logging.info(logStr)
 
 sound.tripleBeep(700, 150, 600, 150, 500, 300)
 
-print "%.3fs>> Terminating script" % (time.time()-initTime)
+logStr = "\nTerminating script"
+print logStr
+logging.info(logStr)
 vehicle.close()
 
 
