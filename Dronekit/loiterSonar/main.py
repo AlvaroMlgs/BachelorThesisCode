@@ -102,7 +102,7 @@ def checkMode(mode):
 
 
 ctrl = Control(takeFun=changeMode, checkTakeFun=checkMode, giveFun=changeMode, checkGiveFun=checkMode,
-			   takeArgs="POSHOLD", checkTakeArgs="POSHOLD", giveArgs="ALT_HOLD", checkGiveArgs="ALT_HOLD")
+			   takeArgs="GUIDED", checkTakeArgs="GUIDED", giveArgs="LOITER", checkGiveArgs="LOITER")
 
 logStr = "Taking control"
 print logStr
