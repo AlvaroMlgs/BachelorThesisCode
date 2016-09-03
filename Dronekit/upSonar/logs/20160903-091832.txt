@@ -1,0 +1,158 @@
+2016-09-03 09:18:32,160 root:INFO 
+Start of script
+2016-09-03 09:18:45,214 root:INFO Vehicle connected
+2016-09-03 09:18:45,468 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:45,621 root:INFO S1>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:45,875 root:INFO S2>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:46,128 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:46,281 root:INFO S1>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:46,335 root:INFO S2>> Distance: 80.012 [m] Velocity: 17.86 [m/s]  Tcollision: 4.48 [s]  Tsafe: 2.48 [s]
+2016-09-03 09:18:46,589 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:46,742 root:INFO S1>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:46,796 root:INFO S2>> Distance: 60.023 [m] Velocity: 27.66 [m/s]  Tcollision: 2.17 [s]  Tsafe: 0.17 [s]
+2016-09-03 09:18:47,050 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:47,203 root:INFO S1>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:47,365 root:INFO S2>> Distance: 60.023 [m] Velocity: 37.45 [m/s]  Tcollision: 1.60 [s]  Tsafe: -0.40 [s]
+2016-09-03 09:18:47,618 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:47,772 root:INFO S1>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:47,930 root:INFO S2>> Distance: 60.023 [m] Velocity: 47.25 [m/s]  Tcollision: 1.27 [s]  Tsafe: -0.73 [s]
+2016-09-03 09:18:48,185 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:48,338 root:INFO S1>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:48,392 root:INFO S2>> Distance: 40.033 [m] Velocity: 47.25 [m/s]  Tcollision: 0.85 [s]  Tsafe: -1.15 [s]
+2016-09-03 09:18:48,647 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:48,800 root:INFO S1>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:48,854 root:INFO S2>> Distance: 20.044 [m] Velocity: 29.39 [m/s]  Tcollision: 0.68 [s]  Tsafe: -1.32 [s]
+2016-09-03 09:18:49,106 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:49,260 root:INFO S1>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:49,314 root:INFO S2>> Distance: 0.054 [m] Velocity: 19.59 [m/s]  Tcollision: 0.00 [s]  Tsafe: -2.00 [s]
+2016-09-03 09:18:49,567 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:49,720 root:INFO S1>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:49,773 root:INFO S2>> Distance: 0.052 [m] Velocity: 9.80 [m/s]  Tcollision: 0.01 [s]  Tsafe: -1.99 [s]
+2016-09-03 09:18:50,027 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:50,107 root:INFO S1>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:50,161 root:INFO S2>> Distance: 0.053 [m] Velocity: -0.00 [m/s]  Tcollision: -752.17 [s]  Tsafe: -754.17 [s]
+2016-09-03 09:18:50,162 root:INFO Starting measurements
+2016-09-03 09:18:50,415 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:50,480 root:INFO S1>> Distance: 80.255 [m] Velocity: 3.75 [m/s]  Tcollision: 21.38 [s]  Tsafe: 19.38 [s]
+2016-09-03 09:18:50,534 root:INFO S2>> Distance: 0.058 [m] Velocity: -0.01 [m/s]  Tcollision: -5.90 [s]  Tsafe: -7.90 [s]
+2016-09-03 09:18:50,534 root:INFO 
+2016-09-03 09:18:50,787 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:50,848 root:INFO S1>> Distance: 60.529 [m] Velocity: 7.04 [m/s]  Tcollision: 8.60 [s]  Tsafe: 6.60 [s]
+2016-09-03 09:18:50,902 root:INFO S2>> Distance: 0.058 [m] Velocity: -0.00 [m/s]  Tcollision: -12.93 [s]  Tsafe: -14.93 [s]
+2016-09-03 09:18:50,903 root:INFO 
+2016-09-03 09:18:51,156 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:51,224 root:INFO S1>> Distance: 41.030 [m] Velocity: 6.62 [m/s]  Tcollision: 6.20 [s]  Tsafe: 4.20 [s]
+2016-09-03 09:18:51,378 root:INFO S2>> Distance: 0.058 [m] Velocity: -0.00 [m/s]  Tcollision: -226.46 [s]  Tsafe: -228.46 [s]
+2016-09-03 09:18:51,378 root:INFO 
+2016-09-03 09:18:51,631 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:51,694 root:INFO S1>> Distance: 21.359 [m] Velocity: 6.70 [m/s]  Tcollision: 3.19 [s]  Tsafe: 1.19 [s]
+2016-09-03 09:18:51,747 root:INFO S2>> Distance: 0.058 [m] Velocity: 0.00 [m/s]  Tcollision: 21.76 [s]  Tsafe: 19.76 [s]
+2016-09-03 09:18:51,748 root:INFO 
+2016-09-03 09:18:52,001 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:52,068 root:INFO S1>> Distance: 1.728 [m] Velocity: 6.78 [m/s]  Tcollision: 0.25 [s]  Tsafe: -1.75 [s]
+2016-09-03 09:18:52,122 root:INFO S2>> Distance: 0.059 [m] Velocity: 0.00 [m/s]  Tcollision: 18.05 [s]  Tsafe: 16.05 [s]
+2016-09-03 09:18:52,122 root:INFO 
+2016-09-03 09:18:52,375 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:52,432 root:INFO S1>> Distance: 1.521 [m] Velocity: 3.57 [m/s]  Tcollision: 0.43 [s]  Tsafe: -1.57 [s]
+2016-09-03 09:18:52,589 root:INFO S2>> Distance: 0.059 [m] Velocity: 0.01 [m/s]  Tcollision: 4.80 [s]  Tsafe: 2.80 [s]
+2016-09-03 09:18:52,590 root:INFO 
+2016-09-03 09:18:52,843 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:52,910 root:INFO S1>> Distance: 1.646 [m] Velocity: -0.01 [m/s]  Tcollision: -224.40 [s]  Tsafe: -226.40 [s]
+2016-09-03 09:18:52,992 root:INFO S2>> Distance: 0.059 [m] Velocity: 0.01 [m/s]  Tcollision: 8.47 [s]  Tsafe: 6.47 [s]
+2016-09-03 09:18:52,993 root:INFO 
+2016-09-03 09:18:53,248 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:53,312 root:INFO S1>> Distance: 1.443 [m] Velocity: 0.30 [m/s]  Tcollision: 4.79 [s]  Tsafe: 2.79 [s]
+2016-09-03 09:18:53,398 root:INFO S2>> Distance: 0.059 [m] Velocity: 0.00 [m/s]  Tcollision: 35.74 [s]  Tsafe: 33.74 [s]
+2016-09-03 09:18:53,399 root:INFO 
+2016-09-03 09:18:53,653 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:53,750 root:INFO S1>> Distance: 1.443 [m] Velocity: 0.10 [m/s]  Tcollision: 14.84 [s]  Tsafe: 12.84 [s]
+2016-09-03 09:18:53,818 root:INFO S2>> Distance: 0.535 [m] Velocity: -0.26 [m/s]  Tcollision: -2.10 [s]  Tsafe: -4.10 [s]
+2016-09-03 09:18:53,819 root:INFO 
+2016-09-03 09:18:54,073 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:54,151 root:INFO S1>> Distance: 1.443 [m] Velocity: -0.09 [m/s]  Tcollision: -15.32 [s]  Tsafe: -17.32 [s]
+2016-09-03 09:18:54,267 root:INFO S2>> Distance: 0.535 [m] Velocity: -0.51 [m/s]  Tcollision: -1.05 [s]  Tsafe: -3.05 [s]
+2016-09-03 09:18:54,268 root:INFO 
+2016-09-03 09:18:54,521 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:54,602 root:INFO S1>> Distance: 1.443 [m] Velocity: -0.75 [m/s]  Tcollision: -1.91 [s]  Tsafe: -3.91 [s]
+2016-09-03 09:18:54,656 root:INFO S2>> Distance: 0.560 [m] Velocity: -0.39 [m/s]  Tcollision: -1.45 [s]  Tsafe: -3.45 [s]
+2016-09-03 09:18:54,657 root:INFO 
+2016-09-03 09:18:54,910 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:55,020 root:INFO S1>> Distance: 1.443 [m] Velocity: -0.58 [m/s]  Tcollision: -2.49 [s]  Tsafe: -4.49 [s]
+2016-09-03 09:18:55,098 root:INFO S2>> Distance: 1.298 [m] Velocity: -0.95 [m/s]  Tcollision: -1.36 [s]  Tsafe: -3.36 [s]
+2016-09-03 09:18:55,099 root:INFO 
+2016-09-03 09:18:55,352 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:55,415 root:INFO S1>> Distance: 1.451 [m] Velocity: -0.46 [m/s]  Tcollision: -3.16 [s]  Tsafe: -5.16 [s]
+2016-09-03 09:18:55,506 root:INFO S2>> Distance: 1.298 [m] Velocity: -1.52 [m/s]  Tcollision: -0.85 [s]  Tsafe: -2.85 [s]
+2016-09-03 09:18:55,507 root:INFO 
+2016-09-03 09:18:55,760 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:55,820 root:INFO S1>> Distance: 1.307 [m] Velocity: -0.28 [m/s]  Tcollision: -4.66 [s]  Tsafe: -6.66 [s]
+2016-09-03 09:18:55,882 root:INFO S2>> Distance: 1.529 [m] Velocity: -1.11 [m/s]  Tcollision: -1.37 [s]  Tsafe: -3.37 [s]
+2016-09-03 09:18:55,884 root:INFO 
+2016-09-03 09:18:56,138 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:56,220 root:INFO S1>> Distance: 1.307 [m] Velocity: -0.10 [m/s]  Tcollision: -12.91 [s]  Tsafe: -14.91 [s]
+2016-09-03 09:18:56,280 root:INFO S2>> Distance: 1.762 [m] Velocity: -0.54 [m/s]  Tcollision: -3.25 [s]  Tsafe: -5.25 [s]
+2016-09-03 09:18:56,281 root:INFO 
+2016-09-03 09:18:56,534 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:56,598 root:INFO S1>> Distance: 1.620 [m] Velocity: -0.07 [m/s]  Tcollision: -24.28 [s]  Tsafe: -26.28 [s]
+2016-09-03 09:18:56,658 root:INFO S2>> Distance: 1.513 [m] Velocity: -0.66 [m/s]  Tcollision: -2.31 [s]  Tsafe: -4.31 [s]
+2016-09-03 09:18:56,659 root:INFO 
+2016-09-03 09:18:56,911 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:56,973 root:INFO S1>> Distance: 1.510 [m] Velocity: 0.05 [m/s]  Tcollision: 27.85 [s]  Tsafe: 25.85 [s]
+2016-09-03 09:18:57,034 root:INFO S2>> Distance: 1.746 [m] Velocity: -0.15 [m/s]  Tcollision: -11.72 [s]  Tsafe: -13.72 [s]
+2016-09-03 09:18:57,035 root:INFO 
+2016-09-03 09:18:57,287 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:57,350 root:INFO S1>> Distance: 1.557 [m] Velocity: 0.02 [m/s]  Tcollision: 96.42 [s]  Tsafe: 94.42 [s]
+2016-09-03 09:18:59,066 root:INFO S2>> Distance: 1.341 [m] Velocity: 0.38 [m/s]  Tcollision: 3.54 [s]  Tsafe: 1.54 [s]
+2016-09-03 09:18:59,067 root:INFO 
+2016-09-03 09:18:59,320 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:59,384 root:INFO S1>> Distance: 1.578 [m] Velocity: -0.07 [m/s]  Tcollision: -24.10 [s]  Tsafe: -26.10 [s]
+2016-09-03 09:18:59,446 root:INFO S2>> Distance: 1.426 [m] Velocity: 0.21 [m/s]  Tcollision: 6.68 [s]  Tsafe: 4.68 [s]
+2016-09-03 09:18:59,447 root:INFO 
+2016-09-03 09:18:59,701 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:18:59,764 root:INFO S1>> Distance: 1.718 [m] Velocity: -0.14 [m/s]  Tcollision: -12.41 [s]  Tsafe: -14.41 [s]
+2016-09-03 09:18:59,845 root:INFO S2>> Distance: 1.426 [m] Velocity: -0.12 [m/s]  Tcollision: -12.30 [s]  Tsafe: -14.30 [s]
+2016-09-03 09:18:59,846 root:INFO 
+2016-09-03 09:19:00,103 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:19:00,169 root:INFO S1>> Distance: 1.722 [m] Velocity: -0.06 [m/s]  Tcollision: -27.10 [s]  Tsafe: -29.10 [s]
+2016-09-03 09:19:00,235 root:INFO S2>> Distance: 1.546 [m] Velocity: -0.16 [m/s]  Tcollision: -9.93 [s]  Tsafe: -11.93 [s]
+2016-09-03 09:19:00,236 root:INFO 
+2016-09-03 09:19:00,488 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:19:00,554 root:INFO S1>> Distance: 1.806 [m] Velocity: -0.08 [m/s]  Tcollision: -21.77 [s]  Tsafe: -23.77 [s]
+2016-09-03 09:19:00,615 root:INFO S2>> Distance: 1.587 [m] Velocity: -0.01 [m/s]  Tcollision: -213.23 [s]  Tsafe: -215.23 [s]
+2016-09-03 09:19:00,616 root:INFO 
+2016-09-03 09:19:00,870 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:19:00,936 root:INFO S1>> Distance: 1.788 [m] Velocity: 0.03 [m/s]  Tcollision: 66.66 [s]  Tsafe: 64.66 [s]
+2016-09-03 09:19:00,997 root:INFO S2>> Distance: 1.590 [m] Velocity: 0.11 [m/s]  Tcollision: 14.78 [s]  Tsafe: 12.78 [s]
+2016-09-03 09:19:00,998 root:INFO 
+2016-09-03 09:19:01,251 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:19:01,322 root:INFO S1>> Distance: 2.016 [m] Velocity: -0.37 [m/s]  Tcollision: -5.51 [s]  Tsafe: -7.51 [s]
+2016-09-03 09:19:01,392 root:INFO S2>> Distance: 1.851 [m] Velocity: -0.44 [m/s]  Tcollision: -4.19 [s]  Tsafe: -6.19 [s]
+2016-09-03 09:19:01,393 root:INFO 
+2016-09-03 09:19:01,646 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:19:01,711 root:INFO S1>> Distance: 2.049 [m] Velocity: -0.26 [m/s]  Tcollision: -7.98 [s]  Tsafe: -9.98 [s]
+2016-09-03 09:19:01,771 root:INFO S2>> Distance: 1.772 [m] Velocity: -0.09 [m/s]  Tcollision: -18.72 [s]  Tsafe: -20.72 [s]
+2016-09-03 09:19:01,772 root:INFO 
+2016-09-03 09:19:02,024 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:19:02,087 root:INFO S1>> Distance: 1.999 [m] Velocity: 0.06 [m/s]  Tcollision: 34.61 [s]  Tsafe: 32.61 [s]
+2016-09-03 09:19:02,151 root:INFO S2>> Distance: 1.764 [m] Velocity: 0.06 [m/s]  Tcollision: 30.68 [s]  Tsafe: 28.68 [s]
+2016-09-03 09:19:02,152 root:INFO 
+2016-09-03 09:19:02,405 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:19:02,466 root:INFO S1>> Distance: 1.888 [m] Velocity: 0.24 [m/s]  Tcollision: 7.91 [s]  Tsafe: 5.91 [s]
+2016-09-03 09:19:02,528 root:INFO S2>> Distance: 1.761 [m] Velocity: 0.02 [m/s]  Tcollision: 96.35 [s]  Tsafe: 94.35 [s]
+2016-09-03 09:19:02,531 root:INFO 
+2016-09-03 09:19:02,789 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:19:02,847 root:INFO S1>> Distance: 1.726 [m] Velocity: 0.38 [m/s]  Tcollision: 4.54 [s]  Tsafe: 2.54 [s]
+2016-09-03 09:19:02,905 root:INFO S2>> Distance: 1.636 [m] Velocity: 0.23 [m/s]  Tcollision: 7.16 [s]  Tsafe: 5.16 [s]
+2016-09-03 09:19:02,906 root:INFO 
+2016-09-03 09:19:03,159 root:INFO S0>> Distance: 100.000 [m] Velocity: 0.00 [m/s]  Tcollision: 10000000.00 [s]  Tsafe: 9999998.00 [s]
+2016-09-03 09:19:03,214 root:INFO S1>> Distance: 1.202 [m] Velocity: 1.06 [m/s]  Tcollision: 1.13 [s]  Tsafe: -0.87 [s]
+2016-09-03 09:19:03,273 root:INFO S2>> Distance: 1.237 [m] Velocity: 0.81 [m/s]  Tcollision: 1.54 [s]  Tsafe: -0.46 [s]
+2016-09-03 09:19:03,274 root:INFO 
+2016-09-03 09:19:03,275 root:INFO Condition met
+2016-09-03 09:19:03,280 root:INFO Taking control
+2016-09-03 09:19:05,093 root:INFO Control taken
+2016-09-03 09:19:16,530 root:INFO Returning control
+2016-09-03 09:19:28,405 root:INFO Control returned
+2016-09-03 09:19:28,422 root:INFO 
+Terminating script
+

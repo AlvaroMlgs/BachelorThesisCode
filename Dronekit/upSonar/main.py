@@ -6,6 +6,7 @@ import time
 import dronekit
 import threading
 import numpy
+import math
 
 # Custom modules
 from connect import Connect  # For connecting to the vehicle
@@ -66,7 +67,7 @@ logStr = "Starting measurements"
 print logStr
 logging.info(logStr)
 
-while not (sonars[s].Tsafe < 0 and sonars[s].Tcollision > 0):
+while not sonars[s].avgDistance < 2: # (sonars[s].Tsafe < 0 and sonars[s].Tcollision > 0):
 #while not avgDistance < 1:
 
 	for s in range(3):
@@ -202,7 +203,7 @@ def wait(seconds):
 	return True
 
 
-autoMove = Auto(do_move, wait, [5,10,[0,0,1]], 10)
+autoMove = Auto(do_move, wait, [3,10,[0,0,1]], 10)
 
 
 print "Starting autonomous flight"

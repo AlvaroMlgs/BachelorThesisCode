@@ -23,7 +23,7 @@ class Auto:
 				except:
 					self.missionFun
 				else:
-					self.missionFun(self.missionArgs)
+					self.missionFun(*self.missionArgs)
 
 		flyClass=thrd(flyThrd)
 		flyClass.name="flyClass"

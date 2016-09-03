@@ -1,0 +1,2 @@
+2016-09-03 08:57:24,464 root:INFO 
+Start of script

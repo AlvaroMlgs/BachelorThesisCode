@@ -7,8 +7,14 @@ class thrd(threading.Thread):
 		self.function=fun
 		if len(args)!=0:
 			self.arguments=args
+		#else:
+		#	self.arguments=None
 
 	def run(self):
+		#if self.arguments==None:
+		#	self.function
+		#else:
+		#	self.function(*self.arguments)
 
 		try:
 			self.arguments
