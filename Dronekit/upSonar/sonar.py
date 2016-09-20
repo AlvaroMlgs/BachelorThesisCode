@@ -96,7 +96,7 @@ class Sonar():
 		try:	# To avoid divisions by 0 from throwing an error
 
 			# Backward differences with a three-data-points stencil
-			self.velocity=(self.distanceBuffer[1]+self.distanceBuffer[2]-2*self.distanceBuffer[0])/(2*self.timeArray[0]-self.timeArray[1]-self.timeArray[2])
+			self.velocity=(2*self.distanceBuffer[0]-self.distanceBuffer[1]-self.distanceBuffer[2])/(2*self.timeArray[0]-self.timeArray[1]-self.timeArray[2])
 
 		except:
 			pass
